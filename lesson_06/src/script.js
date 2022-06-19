@@ -67,6 +67,27 @@ camera.position.z = 3
 camera.lookAt(new THREE.Vector3(0, - 1, 0))
 
 scene.add(camera)
+/**
+ * Animate
+ */
+const clock = new THREE.Clock()
+
+const tick =  () => {
+    // Time
+    const elapsedTime = clock.getElapsedTime()
+
+    // Update objects
+    mesh.position.x = Math.cos(elapsedTime)
+    mesh.position.y = Math.sin(elapsedTime)
+
+    // Render
+    renderer.render(scene, camera)
+
+    // Call tick again on the next 
+    window.requestAnimationFrame(tick)
+}
+
+tick()
 
 /**
  * Renderer
